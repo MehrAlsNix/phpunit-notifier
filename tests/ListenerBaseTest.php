@@ -18,19 +18,21 @@
 namespace MehrAlsNix\PhpUnit\Notifier\Tests;
 
 use PHPUnit_Framework_AssertionFailedError as AssertionFailedError;
+use PHPUnit_Framework_TestCase as TestCase;
 
 /**
  * Class ListenerBaseTest
  * @package MehrAlsNix\PhpUnit\Notifier\Tests
  */
-class ListenerBaseTest extends \PHPUnit_Framework_TestCase
+class ListenerBaseTest extends TestCase
 {
     /**
      * @dataProvider getExceptionAsserted
      */
     public function testNotifyIsCalledByAddError($method, $title, $content)
     {
-        $partialMock = $this->getMockBuilder('MehrAlsNix\PhpUnit\Notifier\ListenerBase')
+        $partialMock = $this
+            ->getMockBuilder('MehrAlsNix\PhpUnit\Notifier\ListenerBase')
             ->setMethods(['notify'])
             ->getMockForAbstractClass();
 
@@ -46,7 +48,8 @@ class ListenerBaseTest extends \PHPUnit_Framework_TestCase
 
     public function testNotifyIsCalledByAddFailure()
     {
-        $partialMock = $this->getMockBuilder('MehrAlsNix\PhpUnit\Notifier\ListenerBase')
+        $partialMock = $this
+            ->getMockBuilder('MehrAlsNix\PhpUnit\Notifier\ListenerBase')
             ->setMethods(['notify'])
             ->getMockForAbstractClass();
 
@@ -59,7 +62,11 @@ class ListenerBaseTest extends \PHPUnit_Framework_TestCase
         $mockTest = $this->getMockObjectGenerator()
             ->getMock('PHPUnit_Framework_Test');
 
-        $partialMock->addFailure($mockTest, new AssertionFailedError($content), time());
+        $partialMock->addFailure(
+            $mockTest,
+            new AssertionFailedError($content),
+            time()
+        );
     }
 
     /**
