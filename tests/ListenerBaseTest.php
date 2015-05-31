@@ -1,6 +1,6 @@
 <?php
 /**
- * Notifier
+ * PHPUnit Notifier
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -12,7 +12,7 @@
  *
  * @copyright 2015 MehrAlsNix (http://www.mehralsnix.de)
  * @license   http://www.opensource.org/licenses/mit-license.php MIT
- * @link      http://github.com/MehrAlsNix/Notifier
+ * @link      https://github.com/MehrAlsNix/phpunit-notifier
  */
 
 namespace MehrAlsNix\PhpUnit\Notifier\Tests;
