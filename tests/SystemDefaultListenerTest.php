@@ -20,7 +20,6 @@ namespace MehrAlsNix\PhpUnit\Notifier\Tests;
 use MehrAlsNix\Assumptions\AssumptionViolatedException;
 use MehrAlsNix\PhpUnit\Notifier\LinuxDefaultListener;
 use MehrAlsNix\PhpUnit\Notifier\WindowsDefaultListener;
-use PHPUnit_Framework_AssertionFailedError as AssertionFailedError;
 use PHPUnit_Framework_TestCase as TestCase;
 
 /**
@@ -29,30 +28,33 @@ use PHPUnit_Framework_TestCase as TestCase;
  */
 class SystemDefaultListenerTest extends TestCase
 {
-    private $listener;
-
-    protected function setUp()
+    /**
+     * @test
+     */
+    public function winNotification()
     {
-        try {
-            assumeOperatingSystem('linux');
-            $this->listener = new LinuxDefaultListener();
-        } catch (AssumptionViolatedException $ave) {
-            assumeOperatingSystem('win');
-            $this->listener = new WindowsDefaultListener();
-        }
+        assumeOperatingSystem('win');
 
-        if (!$this->listener->isAvailable()) {
-            $this->markTestSkipped('No message command available.');
-        }
+        $listener = new WindowsDefaultListener();
+
+        $mockTest = $this->getMockObjectGenerator()
+            ->getMock('PHPUnit_Framework_Test');
+
+        $this->assertNull($listener->notify('test', 'message'));
     }
 
     /**
      * @test
      */
-    public function notification()
+    public function linuxNotification()
     {
+        assumeOperatingSystem('linux');
+
+        $listener = new LinuxDefaultListener();
+
         $mockTest = $this->getMockObjectGenerator()
             ->getMock('PHPUnit_Framework_Test');
-        $this->assertNull($this->listener->addRiskyTest($mockTest, new \Exception('Risky Test'), time()));
+
+        $this->assertNull($listener->notify('test', 'message'));
     }
 }

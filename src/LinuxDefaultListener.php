@@ -15,7 +15,7 @@ class LinuxDefaultListener extends NotificationListenerBase
      * @param string $message
      * @return null
      */
-    protected function notify($title, $message)
+    public function notify($title, $message)
     {
         $this->execute("notify-send -t 2000 '{$title}' '$message'");
     }

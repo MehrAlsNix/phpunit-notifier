@@ -94,6 +94,6 @@ abstract class ListenerBase extends BaseTestListener
      * @param string $message
      * @return mixed
      */
-    abstract protected function notify($title, $message);
+    abstract public function notify($title, $message);
 }
 
