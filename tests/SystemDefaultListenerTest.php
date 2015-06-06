@@ -17,7 +17,6 @@
 
 namespace MehrAlsNix\PhpUnit\Notifier\Tests;
 
-use MehrAlsNix\Assumptions\AssumptionViolatedException;
 use MehrAlsNix\PhpUnit\Notifier\LinuxDefaultListener;
 use MehrAlsNix\PhpUnit\Notifier\WindowsDefaultListener;
 use PHPUnit_Framework_TestCase as TestCase;
