@@ -21,7 +21,7 @@ matrix:
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install notify-send
+  - sudo apt-get install notify-osd
 
 install:
   - composer selfupdate
