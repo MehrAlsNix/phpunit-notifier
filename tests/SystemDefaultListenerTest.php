@@ -53,6 +53,8 @@ class SystemDefaultListenerTest extends TestCase
 
         $listener = new LinuxDefaultListener();
 
+        $this->assertTrue($listener->isAvailable());
+
         $mockTest = $this->getMockObjectGenerator()
             ->getMock('PHPUnit_Framework_Test');
 
