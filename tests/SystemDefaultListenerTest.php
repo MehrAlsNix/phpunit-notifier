@@ -36,6 +36,8 @@ class SystemDefaultListenerTest extends TestCase
 
         $listener = new WindowsDefaultListener();
 
+        $this->assertTrue($listener->isAvailable());
+
         $mockTest = $this->getMockObjectGenerator()
             ->getMock('PHPUnit_Framework_Test');
 

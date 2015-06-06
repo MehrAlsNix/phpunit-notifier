@@ -17,10 +17,6 @@
         </whitelist>
     </filter>
 
-    <listeners>
-        <listener class="MehrAlsNix\PhpUnit\Notifier\WindowsDefaultListener"/>
-    </listeners>
-
     <testsuites>
         <testsuite name="PHPUnit Notifier Test Suite">
             <directory suffix=".php">tests</directory>
