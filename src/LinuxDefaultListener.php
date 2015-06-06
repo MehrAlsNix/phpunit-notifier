@@ -34,6 +34,6 @@ class LinuxDefaultListener extends NotificationListenerBase
      */
     public function isAvailable()
     {
-        return $this->execute('which notify-send');
+        return (bool) $this->execute('which notify-send');
     }
 }
