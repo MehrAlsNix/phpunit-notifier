@@ -26,7 +26,7 @@ class WindowsDefaultListener extends NotificationListenerBase
      */
     protected function notify($title, $message)
     {
-        $this->execute(__DIR__ . "/../vendor/nels-o/toaster/toast/bin/Release/toast.exe -t \"{$title}}\" -m \"{$message}\"");
+        $this->execute(__DIR__ . "/../vendor/nels-o/toaster/toast/bin/Release/toast.exe -t \"{$title}\" -m \"{$message}\"");
     }
 
     /**
