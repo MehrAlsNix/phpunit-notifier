@@ -41,6 +41,18 @@ class ListenerTest extends TestCase
         );
     }
 
+    public function testNotifyIsCalledByFailure()
+    {
+        $listener = new Listener();
+        $this->assertTrue(
+            $listener->addFailure(
+                $this->getMockObjectGenerator()->getMock('\PHPUnit_Framework_Test'),
+                new \PHPUnit_Framework_AssertionFailedError('test'),
+                time()
+            )
+        );
+    }
+
     /**
      * @return array
      */
@@ -48,7 +60,6 @@ class ListenerTest extends TestCase
     {
         return [
             ['addError'],
-            ['addFailure'],
             ['addRiskyTest'],
             ['addIncompleteTest'],
             ['addSkippedTest']
