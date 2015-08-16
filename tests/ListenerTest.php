@@ -32,7 +32,13 @@ class ListenerTest extends TestCase
     public function testNotifyIsCalledBy($method)
     {
         $listener = new Listener();
-        $this->assertTrue($listener->{$method}($this->getMockObjectGenerator()->getMock('\PHPUnit_Framework_Test'), new \Exception('test'), time()));
+        $this->assertTrue(
+            $listener->{$method}(
+                $this->getMockObjectGenerator()->getMock('\PHPUnit_Framework_Test'),
+                new \Exception('test'),
+                time()
+            )
+        );
     }
 
     /**
@@ -42,6 +48,7 @@ class ListenerTest extends TestCase
     {
         return [
             ['addError'],
+            ['addFailure'],
             ['addRiskyTest'],
             ['addIncompleteTest'],
             ['addSkippedTest']
