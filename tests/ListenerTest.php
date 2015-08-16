@@ -15,25 +15,36 @@
  * @link      https://github.com/MehrAlsNix/phpunit-notifier
  */
 
-namespace MehrAlsNix\PhpUnit\Notifier;
+namespace MehrAlsNix\PhpUnit\Notifier\Tests;
 
-class WindowsDefaultListener extends NotificationListenerBase
+use MehrAlsNix\PhpUnit\Notifier\Listener;
+use PHPUnit_Framework_TestCase as TestCase;
+
+/**
+ * Class ListenerBaseTest
+ * @package MehrAlsNix\PhpUnit\Notifier\Tests
+ */
+class ListenerTest extends TestCase
 {
     /**
-     * @param string $title
-     * @param string $message
-     * @return null
+     * @dataProvider getExceptionAsserted
      */
-    public function notify($title, $message)
+    public function testNotifyIsCalledBy($method)
     {
-        $this->execute(__DIR__ . "/../vendor/nels-o/toaster/toast/bin/Release/toast.exe -t \"{$title}\" -m \"{$message}\"");
+        $listener = new Listener();
+        $this->assertTrue($listener->{$method}($this->getMockObjectGenerator()->getMock('\PHPUnit_Framework_Test'), new \Exception('test'), time()));
     }
 
     /**
-     * @return bool
+     * @return array
      */
-    public function isAvailable()
+    public function getExceptionAsserted()
     {
-        return strtoupper(substr(php_uname('s'), 0, 3)) === 'WIN';
+        return [
+            ['addError'],
+            ['addRiskyTest'],
+            ['addIncompleteTest'],
+            ['addSkippedTest']
+        ];
     }
 }

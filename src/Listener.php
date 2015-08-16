@@ -18,6 +18,8 @@
 namespace MehrAlsNix\PhpUnit\Notifier;
 
 use Exception;
+use MehrAlsNix\Notifier\Exception as NotifierException;
+use MehrAlsNix\Notifier\Notify;
 use PHPUnit_Framework_AssertionFailedError as AssertionFailedError;
 use PHPUnit_Framework_BaseTestListener as BaseTestListener;
 use PHPUnit_Framework_Test as Test;
@@ -25,7 +27,7 @@ use PHPUnit_Framework_Test as Test;
 /**
  * Notification Listener.
  */
-abstract class ListenerBase extends BaseTestListener
+class Listener extends BaseTestListener
 {
     /**
      * An error occurred.
@@ -33,10 +35,21 @@ abstract class ListenerBase extends BaseTestListener
      * @param Test $test
      * @param Exception $e
      * @param float $time
+     *
+     * @return bool
      */
     public function addError(Test $test, Exception $e, $time)
     {
-        $this->notify('Error', $e->getMessage());
+        try {
+            Notify::getInstance()
+                ->setTitle('Error')
+                ->setMessage($e->getMessage())
+                ->send();
+        } catch (NotifierException $e) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -45,10 +58,21 @@ abstract class ListenerBase extends BaseTestListener
      * @param Test $test
      * @param AssertionFailedError $e
      * @param float $time
+     *
+     * @return bool
      */
     public function addFailure(Test $test, AssertionFailedError $e, $time)
     {
-        $this->notify('Failure', $e->getMessage());
+        try {
+            Notify::getInstance()
+                ->setTitle('Failure')
+                ->setMessage($e->getMessage())
+                ->send();
+        } catch (NotifierException $e) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -57,10 +81,21 @@ abstract class ListenerBase extends BaseTestListener
      * @param Test $test
      * @param Exception $e
      * @param float $time
+     *
+     * @return bool
      */
     public function addIncompleteTest(Test $test, Exception $e, $time)
     {
-        $this->notify('Incomplete Test', $e->getMessage());
+        try {
+            Notify::getInstance()
+                ->setTitle('Incomplete Test')
+                ->setMessage($e->getMessage())
+                ->send();
+        } catch (NotifierException $e) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -69,11 +104,21 @@ abstract class ListenerBase extends BaseTestListener
      * @param Test $test
      * @param Exception $e
      * @param float $time
-     * @since Method available since Release 4.0.0
+     *
+     * @return bool
      */
     public function addRiskyTest(Test $test, Exception $e, $time)
     {
-        $this->notify('Risky Test', $e->getMessage());
+        try {
+            Notify::getInstance()
+                ->setTitle('Risky Test')
+                ->setMessage($e->getMessage())
+                ->send();
+        } catch (NotifierException $e) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -82,18 +127,20 @@ abstract class ListenerBase extends BaseTestListener
      * @param Test $test
      * @param Exception $e
      * @param float $time
-     * @since Method available since Release 3.0.0
+     *
+     * @return bool
      */
     public function addSkippedTest(Test $test, Exception $e, $time)
     {
-        $this->notify('Skipped Test', $e->getMessage());
+        try {
+            Notify::getInstance()
+                ->setTitle('Skipped Test')
+                ->setMessage($e->getMessage())
+                ->send();
+        } catch (NotifierException $e) {
+            return false;
+        }
+
+        return true;
     }
-
-    /**
-     * @param string $title
-     * @param string $message
-     * @return mixed
-     */
-    abstract public function notify($title, $message);
 }
-
