@@ -17,8 +17,7 @@
   "require": {
     "php": ">=5.6",
     "phpunit/phpunit": "~4",
-    "mehr-als-nix/notifier": "v2.0.0-beta.2@dev",
-    "nels-o/toaster": "dev-master"
+    "mehr-als-nix/notifier": "v2.0.0-beta.3@dev"
   },
   "require-dev": {
     "codeclimate/php-test-reporter": "0.*"

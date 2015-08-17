@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ed623e84dc52e8321e67c3d7fe99f4fb",
+    "hash": "354c3e9539a49423f74ddbf49b2b2022",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -62,20 +62,19 @@
         },
         {
             "name": "mehr-als-nix/notifier",
-            "version": "v2.0.0-beta.2",
+            "version": "v2.0.0-beta.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MehrAlsNix/Notifier.git",
-                "reference": "0759ff45d2b05bed2b20b7309f35cffb5008d37f"
+                "reference": "a1922295d06f964b05aefdaf692dc6a0879bfb28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MehrAlsNix/Notifier/zipball/0759ff45d2b05bed2b20b7309f35cffb5008d37f",
-                "reference": "0759ff45d2b05bed2b20b7309f35cffb5008d37f",
+                "url": "https://api.github.com/repos/MehrAlsNix/Notifier/zipball/a1922295d06f964b05aefdaf692dc6a0879bfb28",
+                "reference": "a1922295d06f964b05aefdaf692dc6a0879bfb28",
                 "shasum": ""
             },
             "require": {
-                "nels-o/toaster": "dev-master",
                 "php": ">=5.6"
             },
             "require-dev": {
@@ -102,18 +101,7 @@
             ],
             "description": "Desktop Notifier Library.",
             "homepage": "http://mehralsnix.github.io/Notifier",
-            "time": "2015-08-16 21:06:43"
-        },
-        {
-            "name": "nels-o/toaster",
-            "version": "dev-master",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/nels-o/toaster/archive/master.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library"
+            "time": "2015-08-17 21:53:49"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -1539,8 +1527,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "mehr-als-nix/notifier": 20,
-        "nels-o/toaster": 20
+        "mehr-als-nix/notifier": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
